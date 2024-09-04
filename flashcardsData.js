@@ -32,7 +32,191 @@ const flashcardsData = {
   { question: "What is a Trie?", answer: "A tree structure for storing strings, enabling efficient prefix searches." },
   { question: "What is Memoization?", answer: "Stores function results to avoid redundant computations." },
   { question: "What is a Priority Queue?", answer: "Dequeues elements based on priority, often implemented with a heap." },
-  { question: "What is Amortized Analysis?", answer: "Averages time over a sequence of operations to measure long-term efficiency." }
+  { question: "What is Amortized Analysis?", answer: "Averages time over a sequence of operations to measure long-term efficiency." },
+  { question: "What is an Array?", answer: "Linear structure storing elements of the same type in contiguous memory, accessed by index." },
+  { question: "Array Code Example", answer: `
+    // Create an array
+    let arr = [1, 2, 3, 4, 5];
+    
+    // Access element at index 2
+    console.log(arr[2]);  // Output: 3
+    
+    // Add element to the end of the array
+    arr.push(6);
+    
+    // Output the updated array
+    console.log(arr);  // Output: [1, 2, 3, 4, 5, 6]
+  ` },
+
+  { question: "What is a Linked List?", answer: "A sequence of nodes, each containing data and a reference to the next." },
+  { question: "Linked List Code Example", answer: `
+    class Node {
+      constructor(data) {
+        this.data = data;  // Store node data
+        this.next = null;  // Pointer to the next node
+      }
+    }
+    
+    class LinkedList {
+      constructor() {
+        this.head = null;  // Initialize head as null
+      }
+      
+      // Method to add a new node to the list
+      add(data) {
+        let newNode = new Node(data);  // Create a new node
+        if (!this.head) {
+          this.head = newNode;  // If list is empty, make new node the head
+        } else {
+          let current = this.head;
+          while (current.next) {
+            current = current.next;  // Traverse to the last node
+          }
+          current.next = newNode;  // Add new node at the end
+        }
+      }
+    }
+
+    // Example usage
+    let list = new LinkedList();
+    list.add(10);
+    list.add(20);
+    console.log(list.head.data);  // Output: 10
+  ` },
+
+  { question: "What is a Stack?", answer: "LIFO structure where elements are added/removed from the top." },
+  { question: "Stack Code Example", answer: `
+    class Stack {
+      constructor() {
+        this.stack = [];  // Initialize an empty stack
+      }
+      
+      // Method to push an element onto the stack
+      push(data) {
+        this.stack.push(data);
+      }
+      
+      // Method to pop an element from the stack
+      pop() {
+        return this.stack.pop();
+      }
+    }
+
+    // Example usage
+    let stack = new Stack();
+    stack.push(10);
+    stack.push(20);
+    console.log(stack.pop());  // Output: 20
+  ` },
+
+  { question: "What is a Queue?", answer: "FIFO structure where elements are added at the rear and removed from the front." },
+  { question: "Queue Code Example", answer: `
+    class Queue {
+      constructor() {
+        this.queue = [];  // Initialize an empty queue
+      }
+      
+      // Method to enqueue an element at the rear
+      enqueue(data) {
+        this.queue.push(data);
+      }
+      
+      // Method to dequeue an element from the front
+      dequeue() {
+        return this.queue.shift();
+      }
+    }
+
+    // Example usage
+    let queue = new Queue();
+    queue.enqueue(10);
+    queue.enqueue(20);
+    console.log(queue.dequeue());  // Output: 10
+  ` },
+
+  { question: "What is a Binary Tree?", answer: "A hierarchical structure where each node has up to two children, used for search and sort." },
+  { question: "Binary Tree Code Example", answer: `
+    class TreeNode {
+      constructor(data) {
+        this.data = data;  // Store node data
+        this.left = null;  // Left child
+        this.right = null;  // Right child
+      }
+    }
+    
+    class BinaryTree {
+      constructor() {
+        this.root = null;  // Initialize root as null
+      }
+      
+      // Method to insert a new node in the binary tree
+      insert(data) {
+        let newNode = new TreeNode(data);  // Create a new node
+        if (!this.root) {
+          this.root = newNode;  // If tree is empty, set root
+        } else {
+          this.insertNode(this.root, newNode);
+        }
+      }
+      
+      // Helper method to insert a node
+      insertNode(node, newNode) {
+        if (newNode.data < node.data) {
+          if (!node.left) {
+            node.left = newNode;  // Insert as left child
+          } else {
+            this.insertNode(node.left, newNode);
+          }
+        } else {
+          if (!node.right) {
+            node.right = newNode;  // Insert as right child
+          } else {
+            this.insertNode(node.right, newNode);
+          }
+        }
+      }
+    }
+
+    // Example usage
+    let tree = new BinaryTree();
+    tree.insert(10);
+    tree.insert(5);
+    tree.insert(20);
+    console.log(tree.root.data);  // Output: 10
+  ` },
+
+  { question: "What is a Hash Table?", answer: "Maps keys to values using a hash function for fast lookups." },
+  { question: "Hash Table Code Example", answer: `
+    class HashTable {
+      constructor(size) {
+        this.table = new Array(size);  // Initialize table with given size
+        this.size = size;  // Set table size
+      }
+      
+      // Hash function to compute index
+      hash(key) {
+        return key % this.size;
+      }
+      
+      // Method to insert a key-value pair
+      set(key, value) {
+        let index = this.hash(key);  // Compute index using hash function
+        this.table[index] = value;  // Store value at computed index
+      }
+      
+      // Method to retrieve a value by key
+      get(key) {
+        let index = this.hash(key);  // Compute index using hash function
+        return this.table[index];  // Retrieve value from the table
+      }
+    }
+
+    // Example usage
+    let hashTable = new HashTable(10);
+    hashTable.set(1, "Apple");
+    hashTable.set(2, "Banana");
+    console.log(hashTable.get(1));  // Output: Apple
+  ` }
 ],
 
 
